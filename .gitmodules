@@ -1,0 +1,3 @@
+[submodule "openproject-ce"]
+	path = openproject-ce
+	url = https://github.com/mrdomino/openproject-ce
