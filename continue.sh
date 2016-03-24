@@ -29,4 +29,4 @@ fi
     RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production ./bin/rake jobs:workoff
   done
 ) | awk '{print "jobs:workoff: " $0}' &
-RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production ./bin/rails s -p 10000 -E production
+RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production ./bin/rails s -p 10000

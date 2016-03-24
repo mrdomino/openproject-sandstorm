@@ -30,7 +30,8 @@ innodb_log_file_size = 1048576
 innodb_autoextend_increment = 1
 EOF
 
+rm -rf /var/lib/mysql /var/log/mysql /var/run/mysqld
 mkdir -p /opt/ruby /opt/node /var/lib/mysql /var/log/mysql /var/run/mysqld
-chown vagrant:vagrant /opt/ruby /opt/node /var/lib/mysql /var/log/mysql /var/run/mysqld
+chown -R vagrant:vagrant /opt/ruby /opt/node /var/lib/mysql /var/log/mysql /var/run/mysqld
 
 su -c "bash /opt/app/.sandstorm/unprivileged-setup.sh" vagrant
