@@ -29,4 +29,4 @@ fi
     RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production ./bin/rake jobs:workoff
   done
 ) | awk '{print "jobs:workoff: " $0}' &
-RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production /opt/ruby/openproject-ce-bundle/ruby/2.3.0/bin/unicorn_rails -p 10000 -E production -c /opt/app/openproject-ce/config/unicorn.sandstorm.rb
+RUBYOPT=-r/opt/ruby/openproject-ce-bundle/bundler/setup RAILS_ENV=production ./bin/rails s -p 10000 -E production

@@ -122,7 +122,7 @@ const pkgdef :Spk.PackageDefinition = (
 
   alwaysInclude = ["openproject-ce/vendored-plugins", "/opt/ruby/openproject-ce-bundle",
                    "openproject-ce/app", "openproject-ce/config", "openproject-ce/public",
-                   "/opt/ruby/rbenv", "/opt/node/nodenv"],
+                   "openproject-ce/read-only-cache", "/opt/ruby/rbenv", "/opt/node/nodenv"],
 
   #bridgeConfig = (
   #  # Used for integrating permissions and roles into the Sandstorm shell
