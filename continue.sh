@@ -2,15 +2,19 @@ export SECRET_KEY_BASE=`base64 /dev/urandom | head -c 30`
 
 set -x -e
 
-base64 /dev/urandom | head -c 30 > /var/openproject_shell_secret
-
 export TMPDIR=/var/tmp
 rm -rf /var/tmp
 mkdir -p /var/tmp
 
+rm -rf /var/run
+mkdir -p /var/run
+mkdir -p /var/run/mysqld
+
+HOME=/etc/mysql /usr/bin/mysqld 2>&1 | awk '{print "mysqld: " $0}' &
+
 cd openproject-ce
 
-export GEM_HOME=/opt/ruby/openproject-ce-bundle/ruby/2.1.0
+export GEM_HOME=/opt/ruby/openproject-ce-bundle/ruby/2.3.0
 
 if [ -f /var/migrations/20160125143638 ]
 then
