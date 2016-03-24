@@ -18,6 +18,7 @@ apt-get install -y --no-install-recommends          \
 
 service mysql stop
 systemctl disable mysql
+
 sed --in-place='' \
     --expression='s/^user\t\t= mysql/#user\t\t= mysql/' \
     /etc/mysql/my.cnf
@@ -29,7 +30,7 @@ innodb_log_file_size = 1048576
 innodb_autoextend_increment = 1
 EOF
 
-mkdir -p /opt/ruby /opt/node
-chown vagrant:vagrant /opt/ruby /opt/node
+mkdir -p /opt/ruby /opt/node /var/lib/mysql /var/log/mysql /var/run/mysqld
+chown vagrant:vagrant /opt/ruby /opt/node /var/lib/mysql /var/log/mysql /var/run/mysqld
 
 su -c "bash /opt/app/.sandstorm/unprivileged-setup.sh" vagrant

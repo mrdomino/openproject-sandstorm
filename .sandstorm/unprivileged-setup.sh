@@ -12,12 +12,12 @@ export PATH=/opt/ruby/rbenv/bin:$PATH
 export RBENV_ROOT=/opt/ruby/rbenv
 eval "$(rbenv init -)"
 
-rbenv shell 2.3.0 || {
+rbenv global 2.3.0 || {
   rbenv install 2.3.0
-  rbenv shell 2.3.0
+  rbenv global 2.3.0
 }
 
-if [ ! -f "$(which bundle)" ]
+if [ ! -e "$(which bundle)" ]
 then
   gem install bundler
 fi
@@ -36,9 +36,9 @@ export PATH=/opt/node/nodenv/bin:$PATH
 export NODENV_ROOT=/opt/node/nodenv
 eval "$(nodenv init -)"
 
-nodenv shell 0.12.7 || {
+nodenv global 0.12.7 || {
   nodenv install 0.12.7
-  nodenv shell 0.12.7
+  nodenv global 0.12.7
 }
 
 # }}}

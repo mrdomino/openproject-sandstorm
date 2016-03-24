@@ -1,6 +1,11 @@
 export SECRET_KEY_BASE=`base64 /dev/urandom | head -c 30`
 
 set -x -e
+export PATH=/opt/ruby/rbenv/bin:/opt/node/nodenv/bin:$PATH
+export RBENV_ROOT=/opt/ruby/rbenv
+export NODENV_ROOT=/opt/node/nodenv
+eval "$(rbenv init -)"
+eval "$(nodenv init -)"
 
 export TMPDIR=/var/tmp
 rm -rf /var/tmp
