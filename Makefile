@@ -5,7 +5,7 @@ openproject-setup: openproject-ce/.git /opt/ruby/openproject-ce-bundle init_mysq
 openproject-ce/.git:
 	git submodule update --init --recursive
 
-/opt/ruby/openproject-ce-bundle:
+/opt/ruby/openproject-ce-bundle openproject-ce/.bundle:
 	cd openproject-ce && bundle install --path /opt/ruby/openproject-ce-bundle --without postgres sqlite development test therubyracer docker --jobs 1 --standalone && npm install
 
 # TODO(cleanup): this is awful
@@ -17,7 +17,7 @@ init_mysql.tar.gz: openproject-ce/.bundle
 	trap "killall -9 mysqld" EXIT && \
 	  sleep 2 && mysql -uroot <init.sql && \
 	  cd openproject-ce && SECRET_KEY_BASE='not so secret' RAILS_ENV=production ./bin/rake db:create db:migrate db:seed && SECRET_KEY_BASE='not so secret' RAILS_ENV=production ./bin/rake assets:precompile && \
-	  killall -HUP mysqld && sleep 2 && killall mysqld
+	  mysqladmin -uroot flush-tables && mysqladmin -uroot shutdown
 	tar -czf init_mysql.tar.gz -C /var/lib/mysql .
 	find /var/lib/mysql -type f -print0 | xargs -0 rm -f
 	find /var/lib/mysql -type d -not -wholename /var/lib/mysql -print0 | xargs -r -0 rmdir
