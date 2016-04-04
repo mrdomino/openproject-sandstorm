@@ -120,9 +120,9 @@ const pkgdef :Spk.PackageDefinition = (
 
   fileList = "sandstorm-files.list",
 
-  alwaysInclude = ["openproject-ce/vendored-plugins", "opt/ruby/openproject-ce-bundle",
-                   "openproject-ce/app", "openproject-ce/config", "openproject-ce/public",
-                   "openproject-ce/read-only-cache", "opt/ruby/rbenv", "opt/node/nodenv"],
+  alwaysInclude = ["opt/app/openproject-ce/vendored-plugins", "opt/ruby/openproject-ce-bundle",
+                   "opt/app/openproject-ce/app", "opt/app/openproject-ce/config", "opt/app/openproject-ce/public",
+                   "opt/app/openproject-ce/read-only-cache", "opt/ruby/rbenv", "opt/node/nodenv"],
 
   bridgeConfig = (
     # Used for integrating permissions and roles into the Sandstorm shell
